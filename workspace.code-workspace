@@ -1,0 +1,19 @@
+{
+    "folders": [
+		{
+			"path": "../tearsheets"
+		},
+		{
+			"path": "../cbls-tearsheet"
+		},
+		{
+			"path": "."
+		}
+	],
+    "settings": {
+        "html.format.indentHandlebars": true,
+        "html.format.indentInnerHtml": true,
+        "html.format.templating": true,
+        "editor.formatOnSave": true
+    }
+}

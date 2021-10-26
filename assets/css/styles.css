@@ -1,0 +1,52 @@
+/* Tailwind base - put variables under: tailwind.config.js */
+@import "node_modules/tailwindcss/base";
+/* Tailwind component classes registered by plugins*/
+@import "node_modules/tailwindcss/components";
+/* Site Specific */
+@import "assets/css/site";
+/* Tailwind's utility classes - generated based on config file */
+@import "node_modules/tailwindcss/utilities";
+
+/* For Printing */
+.page-header,
+.page-header-space {
+    height: 67px;
+}
+
+.page-footer,
+.page-footer-space {
+    height: 50px;
+
+}
+
+.page-footer {
+    z-index: 200;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #022d40;
+}
+
+.page-header {
+    z-index: 100;
+    position: fixed;
+    top: 0mm;
+    width: 100%;
+}
+
+.page {
+    page-break-after: always;
+}
+
+@media print {
+
+    @page {
+        margin: 0.1in;
+        size: landscape;
+    }
+
+    #pagecontents {
+        width: 100%;
+        border: 0px;
+    }
+}

@@ -1,0 +1,227 @@
+{{ define "main" }}
+
+<div class="relative overflow-hidden" style="top: 67px;">
+    <!-- Description and Performance Chart -->
+    <div class="relative flex-grow w-full max-w-8xl mx-auto flex" style="background-color: #022d40">
+        <div class="w-1/3 pr-4">
+            <div class="pl-6 py-6">
+                <!-- Start right column area -->
+                <div class="mx-auto max-w-2xl px-0 text-left flex items-center relative" style="min-height: 8rem;">
+                    <div class="">
+                        <p class="mt-2 text-white text-xl font-extrabold tracking-tight md:text-4xl">
+                            {{ .Params.meta.name }}
+                        </p>
+                        <h1
+                            class="md:mt-4 text-3xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                            <span class="block">{{ .Params.meta.ticker }}</span>
+                        </h1>
+                    </div>
+                </div>
+                <!-- End right column area -->
+            </div>
+        </div>
+        <div class="flex-1 min-w-0 xl:flex w-2/3">
+            <div class="py-4 pr-6">
+                <div class="relative" style="min-height: 5rem;">
+                    <img class="w-full" src={{ .Params.figures.performance.src }}
+                        alt={{ .Params.figures.performance.alt }}>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-4 px-6" style="background-color: #022d40">
+        <div class="text-gray-500 mx-auto">
+            <p class="text-base text-gray-200">
+                {{ .Params.meta.description }}
+            </p>
+        </div>
+    </div>
+
+    <div class="pt-4 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 print:px-6">
+
+            <div class="text-base mx-auto lg:max-w-none  print:max-w-none">
+                <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase print:hidden">Portformer
+                    Automated ETF
+                    Benchmark</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    ETF Benchmark:&nbsp;<span style="color:#125470">
+                        {{ .Params.holdings.name }}
+                    </span>
+                </p>
+            </div>
+            <div class="relative text-base mx-auto">
+                <p class="text-lg text-gray-500">
+
+                    {{ if ne .Params.replication nil }}
+                    Over the period {{ .Params.replication.in_sample.start_period }} to
+                    {{ .Params.replication.in_sample.end_period }}
+                    {{ .Params.meta.ticker }} was compared against
+                    {{ lang.NumFmt 0 .Params.replication.scoring_stats.total_strategies }}
+                    ETFs and identified {{ lang.NumFmt 0 .Params.replication.scoring_stats.qualified_strategies }}
+                    statistically similar ETF strategies. We scored, ranked and organized the results to
+                    create a benchmark comprised of these top
+                    {{ lang.NumFmt 0 5 }} ETFs.
+                    {{ end }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-4 px-4 relative overflow-hidden" style="page-break-before: always; top: 67px;">
+    <div class="text-base max-w-prose mx-auto lg:max-w-none hidden print:block print:max-w-none">
+        <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase print:hidden">Portformer Automated
+            ETF
+            Benchmark</h2>
+        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            <strong>{{ .Params.meta.ticker }}</strong>&nbsp;vs.&nbsp;<span style="color:#125470">
+                {{ .Params.holdings.name }}
+            </span>
+        </p>
+    </div>
+
+    <div class="relative flex flex-col">
+        <!-- Details -->
+        <div class="relative flex-grow w-full max-w-8xl mx-auto flex bg-gray-50">
+            <div class="w-1/3 pr-4">
+
+                <div class="relative ">
+                    <div class="prose prose-indigo text-gray-500 mx-auto lg:max-w-none">
+                        <p>The Portformer Replacement Score is the average of four metrics:
+                        </p>
+                        <ul>
+
+                            <li><strong>Consistent</strong> The extent to which each weighted ETF positions
+                                aligns
+                                to
+                                {{ .Params.meta.ticker }} over time and
+                                through different regimes.
+                            </li>
+                            <li><strong>Complete</strong> The extent to which each weighted ETF positions
+                                correlates
+                                to
+                                {{ .Params.meta.ticker }} in the short
+                                term.
+                            </li>
+                            <li><strong>Simplicity</strong> This metric is closely related to the Herfindahl
+                                Hirschman Index (HHI) and is a measure of the average concentration of the
+                                replication
+                                weights of each weighted ETF positions over time as it tracks {{ .Params.meta.ticker }}.
+                            </li>
+                            <li><strong>Confidence</strong> If above 50, this suggests a greater statitically
+                                likelyhood
+                                of the outperformance of the benchmark over {{ .Params.meta.ticker }} if historical
+                                patterns
+                                continue.
+                            </li>
+                        </ul>
+                        <!-- <h3>Explore More</h3> -->
+                    </div>
+                    <div class="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none print:hidden">
+                        <div class="rounded-md shadow">
+                            <a href="https://beta.portformer.com/discovery/{{ .Params.meta.ticker }}"
+                                class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                                Scoring Details
+                            </a>
+                        </div>
+                        <div class="rounded-md shadow ml-4">
+                            <a href="https://www.portformer.com/methodology/"
+                                class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
+                                Methodology
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex-1 flex w-2/3">
+                <div
+                    class="mt-12 relative text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none print:mt-0 print:max-w-none">
+                    <svg class="absolute top-0 right-0 -mt-20 -mr-20 lg:top-auto lg:right-auto lg:bottom-1/2 lg:left-1/2 lg:mt-0 lg:mr-0 xl:top-0 xl:right-0 xl:-mt-20 xl:-mr-20"
+                        width="404" height="384" fill="none" viewBox="0 0 404 384" aria-hidden="true">
+                        <defs>
+                            <pattern id="background-grid-2" x="0" y="0" width="20" height="20"
+                                patternUnits="userSpaceOnUse">
+                                <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
+                            </pattern>
+                        </defs>
+                        <rect width="404" height="384" fill="url(#background-grid-2)" />
+                    </svg>
+                    <blockquote class="relative bg-white rounded-lg shadow-lg">
+                        {{- partial "replacements-table.html" . -}}
+                        {{- partial "qr-cite.html" . -}}
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tracking Error and Performance Statistics -->
+<div class="py-4 px-6 min-h-screen" style="background-color: #022d40; page-break-before: always; top: 67px;">
+    <div class="py-10 px-6 text-base max-w-prose mx-auto lg:max-w-none  print:block print:max-w-none">
+        <h2 class="text-base text-gray-200 font-semibold tracking-wide uppercase print:hidden">Portformer Automated ETF
+            Benchmark</h2>
+        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-200 sm:text-4xl">
+            <strong>{{ .Params.meta.ticker }}</strong>&nbsp;vs.&nbsp;<span>
+                {{ .Params.holdings.name }}
+            </span>
+        </p>
+        <div class="relative text-base mx-auto">
+            <p class="text-lg text-gray-200">
+                Tracking Error and Drawdown Analysis
+            </p>
+        </div>
+    </div>
+
+    <div class="relative flex flex-col max-h-screen">
+        <div class="relative flex-grow w-full max-w-8xl mx-auto flex ">
+            <div
+                class="flex w-1/2 flex-col mt-12 relative text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none print:mt-0 print:max-w-none">
+
+                <div class="bg-gray-50 overflow-hidden rounded-lg mb-2 mx-4">
+                    <div class="px-1 py-1">
+                        <img class="max-w-12 w-full" src={{ .Params.figures.tracking_error.src }}
+                            alt={{ .Params.figures.tracking_error.alt }}>
+                    </div>
+                </div>
+                <div class="bg-gray-50 overflow-hidden rounded-lg mx-4">
+                    <div class="px-1 py-1">
+                        <img class="max-w-12 w-full" src={{ .Params.figures.drawdown.src }}
+                            alt={{ .Params.figures.tracking_error.alt }}>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 flex w-1/2">
+                <div
+                    class="mt-12 relative text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none print:mt-0 print:max-w-none">
+                    <svg class="absolute top-0 right-0 -mt-20 -mr-20 lg:top-auto lg:right-auto lg:bottom-1/2 lg:left-1/2 lg:mt-0 lg:mr-0 xl:top-0 xl:right-0 xl:-mt-20 xl:-mr-20"
+                        width="404" height="384" fill="none" viewBox="0 0 404 384" aria-hidden="true">
+                        <defs>
+                            <pattern id="background-grid-1" x="0" y="0" width="20" height="20"
+                                patternUnits="userSpaceOnUse">
+                                <rect x="0" y="0" width="4" height="4" class="text-gray-500" fill="currentColor" />
+                            </pattern>
+                        </defs>
+                        <rect width="404" height="384" fill="url(#background-grid-1)" />
+                    </svg>
+                    <blockquote class="relative bg-white rounded-lg shadow-lg">
+                        {{ if ne .Params.statistics nil }}
+                        {{ range first 1 .Params.statistics }}
+                        {{- partial "statistics-table.html" . -}}
+                        {{ end}}
+                        {{ end}}
+                        {{- partial "qr-cite.html" . -}}
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="page-break-before: always; top: 67px;"> </div>
+
+{{- partial "disclaimer.html" . -}}
+
+{{ end }}
