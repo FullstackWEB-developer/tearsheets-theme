@@ -1,6 +1,6 @@
 theme = "tearsheets-theme"
 languageCode = "en-us"
-baseurl = "http://fund.report/"
+baseurl = "http://localhost:8080/"
 title = "Automated Benchmarking Report"
 
 author = "Sean Kruzel"
