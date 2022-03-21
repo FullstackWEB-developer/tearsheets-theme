@@ -1,6 +1,6 @@
 theme = "tearsheets-theme"
 languageCode = "en-us"
-baseurl = "http://localhost:8080/"
+baseurl = "https://scores.portformer.com/"
 title = "Automated Benchmarking Report"
 
 author = "Sean Kruzel"

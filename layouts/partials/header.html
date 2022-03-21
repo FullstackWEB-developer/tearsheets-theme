@@ -2,30 +2,30 @@
     <div style="background-color: #022d40" class="pt-3 pb-2">
         <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
             <div class="flex items-center justify-between flex-1">
-                <div class="flex md:w-auto w-3/12 items-center justify-between pr-auto">
+                <div class="flex md:w-auto xs:w-3/12 items-center justify-between pr-auto">
                     <a href="#">
                         <span class="sr-only">Portformer</span>
-                        <img class="w-full flex "
+                        <img class="w-full sm:h-11"
                             src="https://www.portformer.com/wp-content/uploads/2020/07/Portformer-Logo-Wordpress-New-250x70-clear.png"
                             alt="Portformer | Portfolios. Made Better.">
                     </a>
                 </div>
-                <div class="flex items-center text-center justify-between md:w-full w-3/12 m-auto">
+                <div class="xs:flex items-center text-center justify-between md:w-full sm:w-3/12 hidden m-auto">
                     <a href="{{ .Site.Home.Permalink }}"
                         class="text-center m-auto text-base font-medium text-white hover:text-gray-300">
 
-                        <h2 class="sm:text-base text-xs font-semibold tracking-wide uppercase">
+                        <h4 class="md:text-base text-xs font-semibold tracking-wide uppercase">
                             Automated ETF
-                            Benchmark Report</h2>
+                            Benchmark Report</h4>
                     </a>
                 </div>
-                <div class="flex items-center text-center justify-between md:w-full w-2/12 mx-4 print:hidden">
+                <div class="flex items-center text-center justify-between md:w-full xs:w-2/12 w-1/6 mx-4 print:hidden">
                     <button type="button" onClick="window.print()"
                         class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         PRINT
                     </button>
                 </div>
-                <div class="flex justify-between ml-auto sm:pl-4 md:w-auto w-4/12">
+                <div class="xs:flex justify-between ml-auto sm:pl-4 md:w-auto xs:w-4/12 hidden">
                     <div class="ml-4">
                         <div class="text-sm font-medium text-gray-900">
                             <a href={{ .Params.meta.url }}>
